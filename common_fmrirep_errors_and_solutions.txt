@@ -1,0 +1,19 @@
+fmriprep is a wonderful tool, but occasionally there will be errors that will appear in your html reports and/or log files. 
+This is a compilation of errors I've seen, and steps to resolve them
+
+1). Memory issues: "PBS: job killed: vmem 139623743488 exceeded limit 85899345920"
+	This is a common error to find, where fmriprep consumes too much memory, thus causing the job to crash. There are two solutions to this:
+		a). Re-run the job. Sometimes fmriprep is fickle when it comes to memory allocation, so re-running without changes can oftentimes resolve the issue.
+		b). Allocate more memory for your job.  
+
+2). ICA-AROMA issue: "ERROR:: too many components selected"
+	This only occurs if your fmriprep command includes the --use-aroma flag option. This probably means that the functional run that this error pertains to has too few volumes. To check the number of volumes in a run, do:
+		a). (in afni): 3dinfo -nv sub-subjID_task-taskname_run-runID_bold.nii.gz 
+		b). (in fsl): fslinfo sub-subjID_task-taskname_run-runID_bold.nii.gz | grep dim4
+	The output is the number of volumes in the functional run, which is likely too little, meaning that it was cut short for some reason
+
+3). BIDS error: Anything mentioning "BIDS" in the error reports/files.
+	If you don't select --skip_bids_validation in your fmriprep command, BIDS validation will be performed at the start, which will detect any validation issues early on.
+	This can take some time though, so if you do skip the validation, fmriprep's preprocessing will begin faster, but errors pertaining to the validation may crop up later
+	To fix this:
+		a). Use the online BIDS validator (https://bids-standard.github.io/bids-validator) to ensure that your data is in proper BIDS format. 
