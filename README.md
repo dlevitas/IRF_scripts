@@ -4,7 +4,7 @@ This repository contains code for Indiana University's [Imaging Research Facilty
 
 This repository is idiosyncratic to the IRF, which houses a Siemens Prisma scanner and stores data on IU's [Carbonate HPC](https://kb.iu.edu/d/aolp). Therefore, this repository is primarily meant for IRF users, as the scripts only work for Siemens Prisma imaging data on the Carbonate HPC architecture. Furthermore, Carbonate uses slurm as it's management & job scheduler system. 
 
-These scripts are meant to be run on IU's [Research Desktop (RED)](https://kb.iu.edu/d/apum) or Carbonate. Running them elsewhere will require significant modifications, which is not recommend. The repository can be downloaded to users' RED or Carbonate accounts with the following command: *git clone https://github.com/dlevitas/IRF_scripts /N/slate/$(whoami)* 
+These scripts are meant to be run on IU's [Research Desktop (RED)](https://kb.iu.edu/d/apum) or Carbonate. Running them elsewhere will require significant modifications, which is not recommend. The repository can be downloaded to users' RED or Carbonate accounts with the following command: *git clone https://github.com/dlevitas/IRF_scripts* 
 
 A brief description of each script:
 
