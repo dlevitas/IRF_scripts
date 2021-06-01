@@ -44,6 +44,12 @@ if [[ -z "$bids_root_dir" || -z "$subjects" || -z "$nodes" || -z "$cores" || -z 
 	return
 fi
 
+# Ensure derivatives directory exists
+if [ ! -d $bids_root_dir/derivatives ]; then
+	mkdir $bids_root_dir/derivatives
+fi
+
+
 # Convert mem_mb to gb
 mem_gb=`echo $((mem_mb / 1000))`
 
