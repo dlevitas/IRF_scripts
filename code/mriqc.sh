@@ -73,10 +73,12 @@ if [ $analysis_level == participant ]; then
 		if [ -z `command -v singularity` ]; then
 			module load singularity/3.6.4
 		fi
-
+		
 		# Add Freesurfer to PATH
 		if [ -z `command -v freesurfer` ]; then
 			module load freesurfer/6.0.0 #not latest version, but don't use freesurfer/7.1.0
+		else
+			module swap freesurfer freesurfer/6.0.0
 		fi
 
 		# Generate MRIQC singularity image if not present
