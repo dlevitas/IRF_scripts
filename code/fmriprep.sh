@@ -42,6 +42,11 @@ echo ""
 
 current_dir=$PWD
 
+# Ensure derivatives directory exists
+if [ ! -d $bids_root_dir/derivatives ]; then
+	mkdir $bids_root_dir/derivatives
+fi
+
 #Check user inputs
 echo ""
 if [[ -z "$bids_root_dir" || -z "$subjects" || -z "$nodes" || -z "$cores" || -z "$mem_mb" || -z "$walltime" || -z "$email" || -z "$name" || -z "$overwrite" ]]; then
