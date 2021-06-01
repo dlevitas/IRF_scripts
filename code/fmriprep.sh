@@ -84,11 +84,12 @@ do
 	if [ ! -f $bids_root_dir/.bidsignore ]; then
 		touch $bids_root_dir/.bidsignore
 	fi 
-
+	
 	# Add Freesurfer to PATH
 	if [ -z `command -v freesurfer` ]; then
-		module unload perl
-		module load freesurfer/6.0.0 # Don't use version 7.1.0 b/c seems to throw error
+		module load freesurfer/6.0.0 #not latest version, but don't use freesurfer/7.1.0
+	else
+		module swap freesurfer freesurfer/6.0.0
 	fi
 
 	export FS_LICENSE=$FREESURFER_HOME/license.txt
